@@ -50,7 +50,7 @@ private: // メンバ変数
 	// プレイヤーのモデル
 	Model* model_ = nullptr;
 	// テクスチャハンドル
-	uint32_t textureHandle_ = 0u;
+	uint32_t textureHandle_ = 0;
 	WorldTransform worldTransform_;
 	// ビュープロジェクション
 	ViewProjection viewProjection_;

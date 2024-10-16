@@ -8,6 +8,7 @@ GameScene::GameScene() {
 
 GameScene::~GameScene() {
 	// 自キャラの開放
+	delete model_;
 	delete player_;
 }
 
@@ -35,7 +36,6 @@ void GameScene::Update() {
 }
 
 void GameScene::Draw() {
-	
 
 	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
