@@ -18,9 +18,9 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	// ファイル名を指定してテクスチャを読み込む
 	textureHandle_ = TextureManager::Load("mario.jpg");
-	//
+	//3Dモデルデータの生成
 	model_ = Model::Create();
-	//
+	//ビュープロジェクションの初期化
 	worldTransform_.Initialize();
 	// ビュープロジェクションの初期化
 	viewProjection_.Initialize();
