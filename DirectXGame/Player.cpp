@@ -2,6 +2,8 @@
 #include "Affine.h"
 #include<cassert>
 
+
+
 void Player::Initialize(Model* model, uint32_t textureHandle/*, ViewProjection* viewProjection*/) {
 	// シングルトンインスタンスを取得する
 	input_ = Input::GetInstance();
@@ -46,6 +48,25 @@ void Player::Update() {
 	/*MakeAffineMatrix(worldTransform_.scale_, worldTransform_.rotation_, worldTransform_.translation_);*/
 	worldTransform_.matWorld_ = MakeAffineMatrix(worldTransform_.scale_, worldTransform_.rotation_, worldTransform_.translation_);
 	worldTransform_.TransferMatrix();
+
+	ImGui::Begin("Debug1");
+	//flo
+	ImGui::InputFloat3("InputFloat3", &worldTransform_.translation_.x);
+	ImGui::SliderFloat3("SliderFloat3", &worldTransform_.translation_.x, -10.0f, 10.0f);
+	ImGui::End();
+
+	// 移動限界座標
+	const float kMoveLimitX = 35;
+	const float kMoveLimitY = 19;
+
+	// 範囲を超えない処理
+	worldTransform_.translation_.x = max(worldTransform_.translation_.x, -kMoveLimitX);
+	worldTransform_.translation_.x = min(worldTransform_.translation_.x, +kMoveLimitX);
+	worldTransform_.translation_.y = max(worldTransform_.translation_.y, -kMoveLimitY);
+	worldTransform_.translation_.y = min(worldTransform_.translation_.y, +kMoveLimitY);
+
+	worldTransform_.UpdateMatrix();
+
 }
 
 void Player::Draw(ViewProjection& viewProjection) {

@@ -1,8 +1,9 @@
 #pragma once
-#include<WorldTransform.h>
+#include"WorldTransform.h"
 #include<Model.h>
 #include <Input.h>
-
+#include "MathUtilityForText.h"
+#include <ImGuiManager.h>
 
 class Player {
 public:
@@ -20,5 +21,7 @@ private:
 	Model* model_ = nullptr;
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0u;
+	// ImGuiで値を入力する変数
+	float inputFloat3[3] = {0, 0, 0};
 	
 };
